@@ -1,9 +1,10 @@
 ---
-version: '3.8'
+name: personal-website
 
 services:
   app:
-    image: personal-website
+    #image: personal-website
+    image: images.bautistahome.com/itsageba/personal-website:0.5.2 # please update every new version
     build:
       context: ./
       dockerfile: Dockerfile
