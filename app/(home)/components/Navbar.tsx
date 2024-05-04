@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import Title from './Title';
+import { ModeToggle } from '@/components/ui/drop-down-btn';
 
 export default function Navbar() {
   const socials = [
@@ -31,6 +32,7 @@ export default function Navbar() {
             </Link>
         )
       })}
+      <ModeToggle/>
     </div>
 
     </nav>
