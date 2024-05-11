@@ -23,6 +23,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "api.bautistahome.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "images.pexels.com",
       }
     ]
