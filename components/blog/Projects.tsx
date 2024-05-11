@@ -1,45 +1,46 @@
 import React from 'react'
 import Title from './Title'
 import Card from '@/components/ui/card'
+import Link from 'next/link'
 
 export default function Projects() {
   const projects = [
     {
-      title: 'Project 1',
-      description: 'This is a project',
+      title: 'Portfolio Website',
+      description: '',
       image: '/project_1.png',
-      link: 'https://www.google.com'
+      link: ''
     },
     {
-      title: 'Project 2',
-      description: 'This is a project',
+      title: 'C++ Course Game Project',
+      description: '',
       image: '/project_2.png',
-      link: 'https://www.google.com'
+      link: 'https://github.com/MiguelAngeloBautista/DPCPP-Assignment1'
     },
     {
-      title: 'Project 2',
-      description: 'This is a project',
+      title: 'Android Game Dev Project',
+      description: '',
       image: '/project_2.png',
-      link: 'https://www.google.com'
+      link: ''
     },
     {
-      title: 'Project 2',
-      description: 'This is a project',
+      title: 'Homelab',
+      description: '',
       image: '/project_2.png',
-      link: 'https://www.google.com'
+      link: 'https://wiki.bautistahome.com/'
     },
     {
-      title: 'Project 2',
-      description: 'This is a project',
+      title: 'Game Design Course UE5 Game',
+      description: '',
       image: '/project_2.png',
-      link: 'https://www.google.com'
+      link: ''
     },
-    {
-      title: 'Project 2',
-      description: 'This is a project',
-      image: '/project_2.png',
-      link: 'https://www.google.com'
-    },
+    // {
+    //   title: 'Project 2',
+    //   description: '',
+    //   image: '/project_2.png',
+    //   link: 'https://www.google.com'
+    // },
   ]
 
   return (
