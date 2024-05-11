@@ -100,7 +100,10 @@ const config = {
       },
       { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
     );
-  },require("tailwindcss-animate"), ],
+  },
+  require("tailwindcss-animate"), 
+  require("@tailwindcss/typography"),
+  ],
 } satisfies Config
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).

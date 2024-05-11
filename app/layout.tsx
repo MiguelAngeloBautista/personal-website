@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import Footer from "./blog/components/Footer";
+import { fetchAPI } from "./blog/utils/fetch-api";
+import { getStrapiMedia, getStrapiURL } from "./blog/utils/api-helpers";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+const FALLBACK_SEO = {
   metadataBase: new URL("https://www.bautistahome.com"),
   title: {
     template: "%s | Miguel's Portfolio",
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Miguel Bautista"}],
   creator: "Miguel Bautista",
   publisher: "Miguel Bautista",
-  referrer: "origin-when-cross-origin",
+  // referrer: "origin-when-cross-origin",
   formatDetection: {
     telephone: false,
     address: false,
@@ -44,11 +47,89 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getGlobal();
+
+  if (!meta.data) return FALLBACK_SEO;
+
+  const { metadata, favicon } = meta.data.attributes;
+  const { url } = favicon.data.attributes;
+
+  return {
+    metadataBase: new URL("https://www.bautistahome.com"),
+    title: metadata.metaTitle,
+    description: metadata.metaDescription,
+    icons: {
+      icon: [new URL(url, getStrapiURL())],
+    },
+    authors: [{ name: "Miguel Bautista"}],
+    creator: "Miguel Bautista",
+    publisher: "Miguel Bautista",
+    referrer: "origin-when-cross-origin",
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      title: "Miguel's Portfolio",
+      description: "Miguel's Portfolio - showcasing my projects and skills",
+      url: "/",
+      siteName: "Miguel's Portfolio",
+      images: [{
+        url: "/og.png",
+        width: 288,
+        height: 288,
+        alt: "Miguel's Portfolio",
+      }]
+    },
+  };
+}
+
+async function getGlobal(): Promise<any> {
+  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+
+  if (!token) throw new Error("The Strapi API Token environment variable is not set.");
+
+  const path = `/global`;
+  const options = { headers: { Authorization: `Bearer ${token}` } };
+
+  const urlParamsObject = {
+    populate: [
+      "metadata.shareImage",
+      "favicon",
+      // "navbar.links",
+      // "navbar.navbarLogo.logoImg",
+      // "footer.footerLogo.logoImg",
+      // "footer.menuLinks",
+      "footer.legalLinks",
+      "footer.socialLinks",
+      // "footer.categories",
+    ],
+  };
+
+  const response = await fetchAPI(path, urlParamsObject, options);
+  return response;
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const global = await getGlobal();
+  // TODO: CREATE A CUSTOM ERROR PAGE
+  if (!global.data) return null;
+
+  const { navbar, footer } = global.data.attributes;
+
+  // const navbarLogoUrl = getStrapiMedia(
+  //   navbar.navbarLogo.logoImg.data.attributes.url
+  // );
+
+  // const footerLogoUrl = getStrapiMedia(
+  //   footer.footerLogo.logoImg.data.attributes.url
+  // );
+
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -57,6 +138,16 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange>
         {children}
+
+
+        <Footer
+            // logoUrl={footerLogoUrl}
+            // logoText={footer.footerLogo.logoText}
+            // menuLinks={footer.menuLinks}
+            // categoryLinks={footer.categories.data}
+            legalLinks={footer.legalLinks}
+            socialLinks={footer.socialLinks}
+          />
         </ThemeProvider>
       </body>
     </html>

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import Title from '@/app/(home)/components/Title'
+import Title from '@/components/blog/Title'
 
 export default function Card({projects
 }:{
@@ -20,6 +20,7 @@ export default function Card({projects
         <Image src={img} alt={item.description} width={500} height={300} className="object-cover"></Image>
         <br/>
         <Title text={item.title} className="no-underline"></Title>
+        {item.description? <p className='truncate'>{item.description}</p> : null} 
       </div>
     )
     }))
