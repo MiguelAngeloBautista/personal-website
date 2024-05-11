@@ -19,6 +19,9 @@ if /i "%answer%"=="n" (
 REM Build Docker image with version tag
 docker build -t %IMAGE_NAME%:%VERSION% .
 
+
+set "answer="
+
 set /p "answer=Set tag: %VERSION% as latest? [y/N] "
 set "answer=%answer:~,1%"
 
@@ -27,10 +30,19 @@ if /i "%answer%"=="y" (
     docker tag %IMAGE_NAME%:%VERSION% %IMAGE_NAME%:latest
 )
 
+set "answer="
 REM Ask user if they wany to push the image into the registry
 set /p "answer=Would you like to push %IMAGE_NAME%:%VERSION% to the registry? [y/N] "
 set "answer=%answer:~,1%"
 
 if /i "%answer%"=="y" (
 	docker image push %IMAGE_NAME%:%VERSION%
+)
+set "answer="
+REM Ask user if they wany to push the image as LATEST into the registry
+set /p "answer=Would you like to push %IMAGE_NAME%:LATEST to the registry? [y/N] "
+set "answer=%answer:~,1%"
+
+if /i "%answer%"=="y" (
+	docker image push %IMAGE_NAME%:LATEST
 )
