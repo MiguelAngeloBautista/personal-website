@@ -48,6 +48,9 @@ docker compose up -d
 docker-compose up -d
 ```
 
+## Automated building
+In windows run the build-tag.bat. Dont try selecting 'y' in pushing the image to registry as that isn't public so it might just crash the bat file
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
