@@ -96,7 +96,9 @@ export default function Footer({
             {/* <Logo src={logoUrl}>
               {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
             </Logo> */}
-            <Title text=" Miguel Bautista 😁" className='-rotate-2'/>
+            <Link href="/">
+              <Title text=" Miguel Bautista 😁" className='-rotate-2'/>
+            </Link>
           </div>
           {/* === Categories ===  */}
           {/* <div className="col-span-6 text-center md:text-left md:col-span-3">
@@ -120,8 +122,8 @@ export default function Footer({
         </div>
         <div className="grid justify-center pt-6 lg:justify-between">
           <div className="flex">
-            <span className="mr-2">
-              ©{new Date().getFullYear()} All rights reserved
+            <span className="mr-2 text-gray-600">
+              ©{new Date().getFullYear()} Miguel Angelo Bautista.
             </span>
             {/*=== Legal Links ===*/}
             {/* <ul className="flex">

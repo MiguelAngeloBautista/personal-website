@@ -29,11 +29,11 @@ export default function Navbar() {
       text: 'Home',
       newTab: false
     },
-    {
-      link: '/projects',
-      text: 'Projects',
-      newTab: false
-    },
+    // {
+    //   link: '/projects',
+    //   text: 'Projects',
+    //   newTab: false
+    // },
     {
       link: '/blog',
       text: 'Blog',
@@ -44,7 +44,9 @@ export default function Navbar() {
   return (
     <div className="max-w-7xl mx-auto">
     <nav className='py-10 lg:mx-3 flex justify-between items-center'>
-      <Title text=" Miguel Bautista 😁" className='-rotate-2'/>
+      <Link href="/">
+        <Title text=" Miguel Bautista 😁" className='-rotate-2'/>
+      </Link>
 
       <div className='flex items-center gap-5'>
         <ul className='items-stretch hidden space-x-3 lg:flex'>
