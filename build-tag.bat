@@ -44,5 +44,5 @@ set /p "answer=Would you like to push %IMAGE_NAME%:LATEST to the registry? [y/N]
 set "answer=%answer:~,1%"
 
 if /i "%answer%"=="y" (
-	docker image push %IMAGE_NAME%:LATEST
+	docker image push %IMAGE_NAME%:latest
 )
