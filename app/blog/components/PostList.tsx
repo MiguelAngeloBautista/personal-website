@@ -63,9 +63,9 @@
               const category = article.attributes.category.data?.attributes;
               const authorsBio = article.attributes.authorsBio.data?.attributes;
     
-              const avatarUrl = getStrapiMedia(
-                authorsBio?.avatar.data.attributes.url
-              );
+              // const avatarUrl = getStrapiMedia(
+              //   authorsBio?.avatar.data.attributes.url
+              // );
     
               return (
                 <Link
@@ -80,6 +80,7 @@
                       height="240"
                       className="object-cover w-full h-44 "
                       src={imageUrl}
+                      priority={true}
                     />
                   )}
                   <div className="p-6 space-y-2 relative">

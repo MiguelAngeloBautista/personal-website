@@ -35,10 +35,10 @@ interface Article {
 }
 
 export default function Post({ data }: { data: Article }) {
-    const { title, description, publishedAt, cover, authorsBio } = data.attributes;
+    const { title, publishedAt, cover, authorsBio } = data.attributes;
     const author = authorsBio.data?.attributes;
     const imageUrl = getStrapiMedia(cover.data?.attributes.url);
-    const authorImgUrl = getStrapiMedia(authorsBio.data?.attributes.avatar.data.attributes.url);
+    // const authorImgUrl = getStrapiMedia(authorsBio.data?.attributes.avatar.data.attributes.url);
 
     return (
         <article className="space-y-8 dark:bg-black dark:text-gray-50">
@@ -49,6 +49,7 @@ export default function Post({ data }: { data: Article }) {
                     width={400}
                     height={400}
                     className="w-full h-96 object-cover rounded-lg"
+                    priority={true}
                 />
             )}
             <div className="space-y-6">
