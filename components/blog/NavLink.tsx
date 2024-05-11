@@ -12,7 +12,7 @@ export default function NavLink({ url, text }: NavLink) {
   const path = usePathname();
 
   return (
-    <li className="flex">
+    <li className="flex px-2">
       <Link
         href={url}
         className={`flex items-center mx-4 -mb-1 border-b-2 dark:border-transparent ${
