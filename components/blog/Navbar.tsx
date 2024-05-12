@@ -3,10 +3,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import Title from './Title';
-// import { ModeToggle } from '@/components/ui/drop-down-btn';
 import NavLink from './NavLink';
-import { Button } from '../ui/button';
-// import { usePathname } from "next/navigation";
 
 
 
@@ -30,11 +27,11 @@ export default function Navbar() {
       text: 'Home',
       newTab: false
     },
-    // {
-    //   link: '/projects',
-    //   text: 'Projects',
-    //   newTab: false
-    // },
+    {
+      link: '/projects',
+      text: 'Projects',
+      newTab: false
+    },
     {
       link: '/blog',
       text: 'Blog',
@@ -49,8 +46,6 @@ export default function Navbar() {
         <Link href="/">
           <Title text=" Miguel Bautista 😁" className='-rotate-2'/>
         </Link>
-
-        {/* data-collapse-toggle="navbar-hamburger" */}
         
         <div className='flex items-center gap-5'>
           <div className='hidden w-full items-center gap-5 lg:flex lg:w-max '>

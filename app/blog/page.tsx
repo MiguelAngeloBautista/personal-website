@@ -6,8 +6,7 @@ import Loader from "./components/Loader";
 import PostList from "./components/PostList";
 import PageHeader from "./components/PageHeader";
 import Navbar from "@/components/blog/Navbar";
-import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
-import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import Articles from "@/components/blog/Articles";
 
 interface Meta {
   pagination: {
@@ -41,6 +40,7 @@ export default function Profile() {
           start: start,
           limit: limit,
         },
+        'filters[$and][0][category][name][$eq]': 'articles'
       };
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
@@ -78,7 +78,8 @@ export default function Profile() {
       
       
       <PageHeader heading={"My Blog"} text="Checkout Something Cool" />
-      <PostList data={data}>
+      <Articles limit={Number(process.env.NEXT_PUBLIC_PAGE_LIMIT)} loadMore={true}/>
+      {/* <PostList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (
           <div className="flex justify-center">
@@ -91,7 +92,7 @@ export default function Profile() {
             </button>
           </div>
         )}
-      </PostList>
+      </PostList> */}
     </div>
   );
 }

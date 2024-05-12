@@ -13,20 +13,24 @@ interface Meta {
   };
 }
 
-export default function Projects({
+export default function Articles({
   limit,
-  loadMore,
-  loadTitle,
+  loadMore, 
+  loadTitle
 }: {
-  limit: number,
-  loadMore?: boolean,
+  limit: number, 
+  loadMore?: boolean, 
   loadTitle?: boolean
 } = {
+  loadMore: false, 
   limit: Number(process.env.NEXT_PUBLIC_PAGE_LIMIT)
 }) {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [data, setData] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
+  // const [isLoadMore, setIsLoadMore] = useState(loadmore);
+
+  // setIsLoadMore(loadmore);
 
   const fetchData = useCallback(async (start: number, limit: number) => {
     setLoading(true);
@@ -46,7 +50,7 @@ export default function Projects({
           start: start,
           limit: limit,
         },
-        'filters[$and][0][category][name][$eq]': 'projects'
+        'filters[$and][0][category][name][$eq]': 'articles'
       };
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
@@ -75,10 +79,11 @@ export default function Projects({
   }, [fetchData, limit]);
 
   if (isLoading) return <Loader />;
+
   if (loadMore) {
     return (
       <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20'>
-        {loadTitle && <Title text="Projects" className='text-3xl'/>}
+        {loadTitle && <Title text="Blog"/>}
 
         <PostList data={data}>
           {meta!.pagination.start + meta!.pagination.limit <
@@ -102,15 +107,25 @@ export default function Projects({
 
   return (
     <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20'>
-      {loadTitle && <Title text="Projects"/>}
+      {loadTitle && <Title text="Blog"/>}
 
       <PostList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (
+            // <>{children}</>
               <div className="flex justify-center">
+                {/* <button
+                  type="button"
+                  className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
+                  onClick={loadMorePosts}
+                >
+                  Load more posts...
+                </button> */}
             </div>
+          
         )}
       </PostList>
+      
     </div>
   )
 }
