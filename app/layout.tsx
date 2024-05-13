@@ -60,9 +60,9 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL("https://www.bautistahome.com"),
     title: metadata.metaTitle,
     description: metadata.metaDescription,
-    icons: {
-      icon: [new URL(url, getStrapiURL())],
-    },
+    // icons: {
+    //   icon: [new URL(url, getStrapiURL())],
+    // },
     authors: [{ name: "Miguel Bautista"}],
     creator: "Miguel Bautista",
     publisher: "Miguel Bautista",
