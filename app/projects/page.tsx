@@ -5,7 +5,7 @@ import PageHeader from '../blog/components/PageHeader'
 
 export default function Project() {
   return (
-    <div>
+    <div className='min-h-screen bg-white dark:bg-black text:black dark:text-white'>
       <div>
         <Navbar />
 

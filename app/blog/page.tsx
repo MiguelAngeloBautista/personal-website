@@ -15,13 +15,13 @@ export default function Profile() {
 
 
   return (
-    <div>
+    <div className="bg-white dark:bg-black text:black dark:text-white h-screen">
       <div className="max-w-7xl mx-auto">
         <Navbar />
       </div>
       <PageHeader heading={"My Blog"} text="Checkout Something Cool" />
       <Articles limit={Number(process.env.NEXT_PUBLIC_PAGE_LIMIT)} loadMore={true}/>
-
+      
     </div>
   );
 }

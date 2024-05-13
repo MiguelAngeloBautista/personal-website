@@ -75,7 +75,7 @@ export default function Projects({
   if (isLoading) return <Loader />;
   if (loadMore) {
     return (
-      <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20'>
+      <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20  bg-white dark:bg-black text:black dark:text-white'>
         {loadTitle && <Title text="Projects" className='text-3xl'/>}
 
         <PostList data={data}>
@@ -99,7 +99,7 @@ export default function Projects({
   }
 
   return (
-    <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20'>
+    <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20 '>
       {loadTitle && <Title text="Projects"/>}
 
       <PostList data={data}>

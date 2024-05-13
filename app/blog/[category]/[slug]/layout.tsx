@@ -74,7 +74,8 @@ export default async function LayoutRoute({
   const { categories, articles } = (await fetchSideMenuData(category)) as Data;
 
   return (
-    <section className="container p-8 mx-auto space-y-6 sm:space-y-12">
+    <div className="bg-white dark:bg-black text:black dark:text-white">
+    <section className="container p-8 mx-auto space-y-6 sm:space-y-12 ">
       <div>
           <Navbar />
       </div>
@@ -90,6 +91,7 @@ export default async function LayoutRoute({
         </aside> */}
       </div>
     </section>
+    </div>
   );
 }
 
