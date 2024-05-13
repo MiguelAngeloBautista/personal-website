@@ -1,6 +1,8 @@
     // ./frontend/stc/app/[lang]/utils/fetch-api.tsx
+    "use server"
     import qs from "qs";
     import { getStrapiURL } from "./api-helpers";
+    import 'server-only'
     
     export async function fetchAPI(
       path: string,
@@ -16,7 +18,7 @@
           },
           ...options,
         };
-    
+        
         // Build request URL
         const queryString = qs.stringify(urlParamsObject);
         const requestUrl = `${getStrapiURL(
