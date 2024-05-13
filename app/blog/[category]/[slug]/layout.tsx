@@ -6,13 +6,11 @@ import Navbar from "@/components/blog/Navbar";
 
 async function fetchSideMenuData(filter: string) {
   try {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-    const options = { headers: { Authorization: `Bearer ${token}` } };
 
     const categoriesResponse = await fetchAPI(
       "/categories",
       { populate: "*" },
-      options
+      // options
     );
 
     const articlesResponse = await fetchAPI(
@@ -26,7 +24,7 @@ async function fetchSideMenuData(filter: string) {
             },
           }
         : {},
-      options
+      // options
     );
 
     return {
@@ -96,15 +94,13 @@ export default async function LayoutRoute({
 }
 
 export async function generateStaticParams() {
-  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
   const path = `/articles`;
-  const options = { headers: { Authorization: `Bearer ${token}` } };
   const articleResponse = await fetchAPI(
     path,
     {
       populate: ["category"],
     },
-    options
+    // options
   );
 
   return articleResponse.data.map(

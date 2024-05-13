@@ -10,11 +10,17 @@
       options = {}
     ) {
       try {
+        const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+
+        // const daoptions = { headers: { Authorization: `Bearer ${token}` } };
+        // const options = { Authorization: `Bearer ${token}` };
+
         // Merge default and user options
         const mergedOptions = {
           next: { revalidate: 60 },
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
           },
           ...options,
         };

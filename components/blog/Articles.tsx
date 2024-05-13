@@ -35,7 +35,6 @@ export default function Articles({
   const fetchData = useCallback(async (start: number, limit: number) => {
     setLoading(true);
     try {
-      const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
       const path = `/articles`;
       const urlParamsObject = {
         sort: { createdAt: "desc" },
@@ -52,8 +51,7 @@ export default function Articles({
         },
         'filters[$and][0][category][name][$eq]': 'articles'
       };
-      const options = { headers: { Authorization: `Bearer ${token}` } };
-      const responseData = await fetchAPI(path, urlParamsObject, options);
+      const responseData = await fetchAPI(path, urlParamsObject);
 
       if (start === 0) {
         setData(responseData.data);
@@ -112,7 +110,6 @@ export default function Articles({
       <PostList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (
-            // <>{children}</>
               <div className="flex justify-center">
                 {/* <button
                   type="button"

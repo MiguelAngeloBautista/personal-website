@@ -4,7 +4,6 @@ import PostList from '@/app/blog/components/PostList';
 
 async function fetchPostsByCategory(filter: string) {
     try {
-        const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
         const path = `/articles`;
         const urlParamsObject = {
             sort: { createdAt: 'desc' },
@@ -23,8 +22,7 @@ async function fetchPostsByCategory(filter: string) {
                 },
             },
         };
-        const options = { headers: { Authorization: `Bearer ${token}` } };
-        const responseData = await fetchAPI(path, urlParamsObject, options);
+        const responseData = await fetchAPI(path, urlParamsObject);
         return responseData;
     } catch (error) {
         console.error(error);

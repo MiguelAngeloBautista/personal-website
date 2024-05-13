@@ -3,7 +3,6 @@ import Post from '@/components/blog/Post';
 import type { Metadata } from 'next';
 
 async function getPostBySlug(slug: string) {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const path = `/articles`;
     const urlParamsObject = {
         filters: { slug },
@@ -14,20 +13,17 @@ async function getPostBySlug(slug: string) {
             blocks: { populate: '*' },
         },
     };
-    const options = { headers: { Authorization: `Bearer ${token}` } };
-    const response = await fetchAPI(path, urlParamsObject, options);
+    const response = await fetchAPI(path, urlParamsObject);
     return response;
 }
 
 async function getMetaData(slug: string) {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const path = `/articles`;
     const urlParamsObject = {
         filters: { slug },
         populate: { seo: { populate: '*' } },
     };
-    const options = { headers: { Authorization: `Bearer ${token}` } };
-    const response = await fetchAPI(path, urlParamsObject, options);
+    const response = await fetchAPI(path, urlParamsObject);
     return response.data;
 }
 
@@ -56,15 +52,13 @@ export default async function PostRoute({ params }: { params: { slug: string } }
 }
 
 export async function generateStaticParams() {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const path = `/articles`;
-    const options = { headers: { Authorization: `Bearer ${token}` } };
     const articleResponse = await fetchAPI(
         path,
         {
             populate: ['category'],
         },
-        options
+        // options
     );
 
     return articleResponse.data.map(

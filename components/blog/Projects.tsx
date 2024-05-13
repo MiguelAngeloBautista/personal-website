@@ -31,7 +31,6 @@ export default function Projects({
   const fetchData = useCallback(async (start: number, limit: number) => {
     setLoading(true);
     try {
-      const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
       const path = `/articles`;
       const urlParamsObject = {
         sort: { createdAt: "desc" },
@@ -48,8 +47,7 @@ export default function Projects({
         },
         'filters[$and][0][category][name][$eq]': 'projects'
       };
-      const options = { headers: { Authorization: `Bearer ${token}` } };
-      const responseData = await fetchAPI(path, urlParamsObject, options);
+      const responseData = await fetchAPI(path, urlParamsObject);
 
       if (start === 0) {
         setData(responseData.data);
