@@ -19,7 +19,16 @@ const config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        
       },
+    },
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px', // laptop
+      'xl': '1280px', 
+      '2xl': '1536px', // desktop 1080p
+      "3xl": "2000px", // desktop 1440p
     },
     extend: {
       colors: {
@@ -80,11 +89,21 @@ const config = {
           from: { transform: "translateY(50%)", opacity: "0" },
           to: { transform: "translateY(0)", opacity: "1" }
         },
+        "swipe-left": {
+          from: { transform: "translateX(100%)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" }
+        },
+        "swipe-left-out": {
+          from: { transform: "translateX(0%)", opacity: "1" },
+          to: { transform: "translateX(100%)", opacity: "0" },
+        },
       },
       animation: {
         "flyin-bottom": "flyin-bottom 1s ease-out",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "swipe-left": "swipe-left 0.2s ease-out",
+        "swipe-left-out": "swipe-left-out 0.2s ease-out",
       },
     },
   },
