@@ -47,16 +47,18 @@ export default function Navbar() {
           <Title text=" Miguel Bautista 😁" className='-rotate-2'/>
         </Link>
         
+        {/* Hamburger Section */}
         <div className='flex items-center gap-5'>
-          <div className='hidden w-full items-center gap-5 lg:flex lg:w-max '>
+          {/* Hamburger Menu */}
+          <div className='hidden w-full items-center gap-5 lg:flex lg:w-max'>
             <ul className='items-stretch space-x-3 lg:flex '> {/*hidden lg:flex*/}
               {pages.map((page, index) => {
                 return (
-                  <NavLink key={index} id={index} url={page.link} text={page.text} newTab={page.newTab}  />
+                  <NavLink id={index} key={index} url={page.link} text={page.text} newTab={page.newTab}  />
                 )
               })}
               
-              <div className="flex items-center gap-5">
+              <li className="flex items-center gap-5">
                 {socials.map((social, index) => {
                   const Icon = social.icon
 
@@ -66,39 +68,51 @@ export default function Navbar() {
                       </Link>
                   )
                 })}
-              </div>
+              </li>
             </ul>
           </div>
           {/* <ModeToggle/> */}
-          <button  className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle Navbar Menu">
+          {/* Hamburger Menu Button */}
+          <button  className="lg:hidden z-[31]" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle Navbar Menu">
           <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"  />
           </svg>
         </button>
         </div>
-      </nav>
-      {/* block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white */}
-      <div>
-          <ul className={`w-full flex flex-col font-medium mt-4 rounded-lg bg-gray-50 gap-2 dark:bg-gray-800 dark:border-gray-700 ${isMenuOpen ? 'block' : 'hidden'}`}>
-          {pages.map((page, index) => {
-              return (
-                  <NavLink key={index} id={index} url={page.link} text={page.text} newTab={page.newTab}  />
-              )
-            })}
-            
-            <li className="flex items-center gap-5 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-              {socials.map((social, index) => {
-                const Icon = social.icon
 
+        <div className={`lg:hidden w-full absolute z-30  right-0 -top-4 
+          ${isMenuOpen ? 'opacity-100 animate-swipe-left no-doc-scroll' : 'animate-swipe-left-out opacity-0'} 
+          text-2xl bg-black bg-opacity-65 overflow-x-hidden`}
+          >
+
+          <div className=' pt-24 flex flex-col gap-7 font-medium mt-4 bg-gray-50  dark:bg-indigo-900 h-screen w-[80%] float-right '>
+            <ul className='flex flex-col gap-7 min-h-[80%]'>
+            {pages.map((page, index) => {
                 return (
-                    <Link href={social.link} key={index} aria-label={social.label} target="_blank" rel="noopener noreferrer">
-                      <Icon className=' size-5 hover:scale-125 transition-all'/>
-                    </Link>
+                    <NavLink  key={index} id={index} url={page.link} text={page.text} newTab={page.newTab}  />
                 )
               })}
-            </li>
-          </ul>
+              
+              
+            </ul>
+            <ul className=''>
+              <li className=" flex items-center gap-5 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
+                  {socials.map((social, index) => {
+                    const Icon = social.icon
+
+                    return (
+                        <Link href={social.link} key={index} aria-label={social.label} target="_blank" rel="noopener noreferrer">
+                          <Icon className=' size-7 hover:scale-125 transition-all'/>
+                        </Link>
+                    )
+                  })}
+                </li>
+              </ul>
+          </div>
         </div>
+      </nav>
+      {/* block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white */}
+      
     </div>
   )
 }

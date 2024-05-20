@@ -34,6 +34,11 @@
 
     --radius: 0.5rem;
   }
+  :root:has(.no-doc-scroll) {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
 
   .dark {
     --background: 222.2 84% 4.9%;
