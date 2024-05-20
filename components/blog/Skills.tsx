@@ -28,7 +28,7 @@ export const Skills = () => {
       icon: SiHtml5
     },
     {
-      text: 'Unreal Engine',
+      text: 'UE 5',
       icon: SiUnrealengine
     },
     {
@@ -51,10 +51,10 @@ export const Skills = () => {
   ]
 
   return (
-    <div className='text-center max-w-7xl mx-auto py-20 text-2xl lg:text-3xl'>
+    <div className='text-center py-20 text-2xl lg:text-3xl'>
       
       <Title text="Skills ✏️"/>
-      <div className='flex flex-col lg:grid items-center lg:grid-cols-5 py-10 gap-5'>
+      <div className='flex flex-col lg:grid items-center lg:grid-cols-3 py-10 gap-24 mx-[100px] xl:mx-[200px] 2xl:mx-[300px] 3xl:mx-[500px]'>
         <Card items={skill}/>
       </div>
       

@@ -16,11 +16,9 @@ interface Meta {
 export default function Projects({
   limit,
   loadMore,
-  loadTitle,
 }: {
   limit: number,
   loadMore?: boolean,
-  loadTitle?: boolean
 } = {
   limit: Number(process.env.NEXT_PUBLIC_PAGE_LIMIT)
 }) {
@@ -75,8 +73,8 @@ export default function Projects({
   if (isLoading) return <Loader />;
   if (loadMore) {
     return (
-      <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20  bg-white dark:bg-black text:black dark:text-white'>
-        {loadTitle && <Title text="Projects" className='text-3xl'/>}
+      // max-w-sm lg:max-w-[60vw]
+      <div className='text-center mx-auto  text-2xl  lg:text-3xl py-20  bg-white dark:bg-black text:black dark:text-white xl:w-[1400px]'>
 
         <PostList data={data}>
           {meta!.pagination.start + meta!.pagination.limit <
@@ -99,8 +97,8 @@ export default function Projects({
   }
 
   return (
-    <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20 '>
-      {loadTitle && <Title text="Projects"/>}
+    <div className='text-2xl lg:text-3xl py-20 mx-auto 2xl:w-[1400px]'>
+      <Title text="Projects" className='pb-10'/>
 
       <PostList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <

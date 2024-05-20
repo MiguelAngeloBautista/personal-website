@@ -53,9 +53,9 @@ export default function PostList({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="container p-6 mx-auto ">
-      {/*grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 */}
-      <div className="justify-center gap-6 grid grid-cols-1 lg:grid-cols-3"> 
+    <section className="">
+      {/*grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3  xl:gap-0*/}
+      <div className="text-left grid grid-cols-1 xl:grid-cols-3 gap-5"> 
         {articles.map((article) => {
           const imageUrl = getStrapiMedia(
             article.attributes.cover.data?.attributes.url

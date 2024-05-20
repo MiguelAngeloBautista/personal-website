@@ -16,11 +16,9 @@ interface Meta {
 export default function Articles({
   limit,
   loadMore, 
-  loadTitle
 }: {
   limit: number, 
   loadMore?: boolean, 
-  loadTitle?: boolean
 } = {
   loadMore: false, 
   limit: Number(process.env.NEXT_PUBLIC_PAGE_LIMIT)
@@ -80,8 +78,8 @@ export default function Articles({
 
   if (loadMore) {
     return (
-      <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20'>
-        {loadTitle && <Title text="Blog"/>}
+      // max-w-sm lg:max-w-[60vw]
+      <div className='text-center mx-auto text-2xl lg:text-3xl py-20 xl:w-[1400px]'>
 
         <PostList data={data}>
           {meta!.pagination.start + meta!.pagination.limit <
@@ -104,8 +102,8 @@ export default function Articles({
   }
 
   return (
-    <div className='text-center mx-auto max-w-sm text-2xl lg:max-w-[60vw] lg:text-3xl py-20'>
-      {loadTitle && <Title text="Blog"/>}
+    <div className='text-2xl lg:text-3xl py-20 mx-auto  2xl:w-[1400px]'>
+      <Title text="Blog" className='pb-10'/>
 
       <PostList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <

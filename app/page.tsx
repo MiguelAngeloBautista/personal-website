@@ -3,19 +3,21 @@ import HeroSection from "../components/blog/HeroSection";
 import { Skills } from "../components/blog/Skills";
 import Projects from "../components/blog/Projects";
 import Articles from "@/components/blog/Articles";
+import Title from "@/components/blog/Title";
 
 export default function Home() {
 
   return (
     <main>  
-      <div className="min-h-screen bg-white dark:bg-black text:black dark:text-white">
+      <div className="min-h-screen bg-white dark:bg-black text:black dark:text-white text-center">
         <Navbar />
         
         <HeroSection />
         <Skills/>
-        <Projects limit={3} loadTitle={true} />
-        {/* <Title text="Blog"/> */}
-        <Articles limit={3} loadMore={false} loadTitle={true}/>
+        <div className="lg:flex flex-row xl:block xl:mx-16 ">
+          <Projects limit={3} />
+          <Articles limit={3} loadMore={false}/>
+        </div>
 
         
         {/* <Footer /> */}

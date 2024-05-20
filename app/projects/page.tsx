@@ -10,7 +10,7 @@ export default function Project() {
         <Navbar />
 
         <PageHeader heading={"My Projects"} text="Checkout Something Awesome" />
-        <Projects limit={Number(process.env.NEXT_PUBLIC_PAGE_LIMIT)}/>
+        <Projects limit={Number(process.env.NEXT_PUBLIC_PAGE_LIMIT)} loadMore={true}/>
         
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function Profile() {
 
 
   return (
-    <div className="bg-white dark:bg-black text:black dark:text-white h-screen">
+    <div className="bg-white dark:bg-black text:black dark:text-white min-h-screen">
       <div className="max-w-7xl mx-auto">
         <Navbar />
       </div>
