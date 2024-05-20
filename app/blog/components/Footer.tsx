@@ -92,7 +92,7 @@ export default function Footer({
     <footer className="py-6 dark:bg-black dark:text-gray-50">
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
         <div className="grid grid-cols-12">
-          <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
+          <div className="lg:pb-6 col-span-full md:pb-0 md:col-span-6">
             {/* <Logo src={logoUrl}>
               {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
             </Logo> */}
@@ -120,8 +120,8 @@ export default function Footer({
             </ul>
           </div> */}
         </div>
-        <div className="grid justify-center pt-6 lg:justify-between">
-          <div className="flex">
+        <div className="flex justify-center pt-6 lg:justify-between">
+          <div className="">
             <span className="mr-2 text-gray-600">
               ©{new Date().getFullYear()} Miguel Angelo Bautista.
             </span>
@@ -138,7 +138,7 @@ export default function Footer({
               ))}
             </ul> */}
           </div>
-          <div className="flex items-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
+          <div className="flex items-center space-x-4 lg:pt-0 lg:col-end-13">
             {socialLinks.map((link: FooterLink) => {
               return (
                 <a
