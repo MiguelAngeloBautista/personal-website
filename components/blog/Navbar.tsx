@@ -112,18 +112,18 @@ export default function Navbar() {
 				{/* ========================== BACKGROUND FOR DRAWER NAVBAR ========================== */}
 				<div
 					aria-hidden="true"
-					className={`lg:hidden w-full absolute bg-black bg-opacity-65 
-          min-h-screen right-0 z-30 top-0 transition ease-in-out duration-500
-          ${isMenuOpen ? "opacity-100 " : "opacity-0 w-0"}`}
+					className={`lg:hidden  absolute bg-black bg-opacity-65 
+          right-0 z-30 top-0 transition ease-in-out duration-500
+          ${isMenuOpen ? "opacity-100 w-full min-h-screen" : "opacity-0 w-0 "}`}
 					onClick={() => setIsMenuOpen(false)}
 				></div>
 
 				<div
 					aria-haspopup="menu"
-					className={`lg:hidden absolute  z-30 -top-4 right-0 w-[80%]
+					className={`lg:hidden absolute z-30 -top-4 right-0 w-[80%]
           ${isMenuOpen
-					? "opacity-100 animate-swipe-left no-doc-scroll"
-					: "animate-swipe-left-out opacity-0 translate-x-[-100%]"
+					? "opacity-100 animate-swipe-left no-doc-scroll "
+					: "animate-swipe-left-out opacity-0 translate-x-[-125%] "
 					} 
           text-2xl `}
 					
