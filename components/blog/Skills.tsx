@@ -28,7 +28,7 @@ export const Skills = () => {
       icon: SiHtml5
     },
     {
-      text: 'UE 5',
+      text: 'Unreal Engine',
       icon: SiUnrealengine
     },
     {
