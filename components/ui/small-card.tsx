@@ -14,7 +14,7 @@ export default function Card({items
     const Icon = item.icon
     return (
       <div key={index} className='flex items-center justify-center gap-3 bg-white text-black dark:bg-black dark:text-white p-2 rounded-md'>
-        <Icon size={30}/>
+        <Icon size={30} aria-hidden="true"/>
         <p>{item.text}</p>
       </div>
     )
