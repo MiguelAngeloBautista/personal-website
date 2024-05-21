@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import Footer from "./blog/components/Footer";
+import Footer from "../components/ui/Footer";
 import { fetchAPI } from "./blog/utils/fetch-api";
 import { getStrapiMedia, getStrapiURL } from "./blog/utils/api-helpers";
 

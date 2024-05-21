@@ -106,19 +106,6 @@ export default function Articles({
       <Title text="Blog" className='pb-10'/>
 
       <PostList data={data}>
-        {meta!.pagination.start + meta!.pagination.limit <
-          meta!.pagination.total && (
-              <div className="flex justify-center">
-                {/* <button
-                  type="button"
-                  className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
-                  onClick={loadMorePosts}
-                >
-                  Load more posts...
-                </button> */}
-            </div>
-          
-        )}
       </PostList>
       
     </div>

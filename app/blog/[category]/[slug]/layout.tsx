@@ -75,13 +75,14 @@ export default async function LayoutRoute({
 
   return (
     <div className="bg-white dark:bg-black text:black dark:text-white">
-    <section className="container p-8 mx-auto space-y-6 sm:space-y-12 ">
       <div>
           <Navbar />
       </div>
+      <section className="md:pl-[7%] lg:pl-[10%] 3xl:pl-[10%] container pt-8 pb-8 space-y-6 sm:space-y-12">
+      
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4">
-        <div className="col-span-2">{children}</div>
+        <div className="md:col-span-3 lg:col-span-2 ">{children}</div>
         {/* <aside>
           <ArticleSelect
             categories={categories}

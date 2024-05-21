@@ -101,11 +101,6 @@ export default function Projects({
       <Title text="Projects" className='pb-10'/>
 
       <PostList data={data}>
-        {meta!.pagination.start + meta!.pagination.limit <
-          meta!.pagination.total && (
-              <div className="flex justify-center">
-            </div>
-        )}
       </PostList>
     </div>
   )
