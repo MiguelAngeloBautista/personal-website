@@ -41,11 +41,7 @@ export default function Navbar() {
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
-		if (!isMenuOpen == true) {
-			setPlayAnimation(false);
-		} else {
-			setPlayAnimation(true);
-		}
+		setPlayAnimation(isMenuOpen) // IDK WHY BUT THIS FIXES THE ANIMATION WTF WHY IS THIS USING THE PREVOUS STATE OF isMenuOpen????!?!
 	};
 
 	return (
