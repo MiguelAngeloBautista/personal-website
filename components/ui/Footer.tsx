@@ -56,17 +56,17 @@ function FooterLink({ url, text }: FooterLink) {
 function RenderSocialIcon({ social }: { social: string | undefined }) {
   switch (social) {
     case "WEBSITE":
-      return <CgWebsite />;
+      return <CgWebsite size={25}/>;
     case "TWITTER":
-      return <AiFillTwitterCircle />;
+      return <AiFillTwitterCircle size={25}/>;
     case "YOUTUBE":
-      return <AiFillYoutube />;
+      return <AiFillYoutube size={25}/>;
     case "DISCORD":
-      return <SiDiscord />;
+      return <SiDiscord size={25}/>;
     case "GITHUB":
-      return <SiGithub />;
+      return <SiGithub size={25}/>;
     case "LINKEDIN":
-      return <SiLinkedin />;
+      return <SiLinkedin size={25}/>;
     default:
       return null;
   }
@@ -77,7 +77,7 @@ export default function Footer({
   // logoText,
   // menuLinks,
   // categoryLinks,
-  legalLinks,
+  // legalLinks,
   socialLinks,
 }: {
   // logoUrl: string | null;
@@ -120,9 +120,9 @@ export default function Footer({
             </ul>
           </div> */}
         </div>
-        <div className="flex justify-center pt-6 lg:justify-between">
+        <div className="flex justify-center pt-6 lg:justify-between lg:flex-row lg:gap-0 flex-col items-center gap-5">
           <div className="">
-            <span className="mr-2 text-gray-600">
+            <span className="mr-2 text-gray-300">
               ©{new Date().getFullYear()} Miguel Angelo Bautista.
             </span>
             {/*=== Legal Links ===*/}
@@ -138,7 +138,7 @@ export default function Footer({
               ))}
             </ul> */}
           </div>
-          <div className="flex items-center space-x-4 lg:pt-0 lg:col-end-13">
+          <div className="flex items-center space-x-4 lg:pt-0 lg:col-end-13 gap-5">
             {socialLinks.map((link: FooterLink) => {
               return (
                 <a
@@ -147,10 +147,10 @@ export default function Footer({
                   href={link.url}
                   title={link.text}
                   target={link.newTab ? "_blank" : "_self"}
-                  className="flex items-center justify-center size-5 rounded-full hover:scale-125 transition-all"
+                  className="flex items-center justify-center rounded-full lg:hover:scale-125 transition-all"
                 > 
                 {/* dark:bg-violet-400 dark:text-gray-900 */}
-                  <RenderSocialIcon social={link.social} />
+                  <RenderSocialIcon social={link.social}/>
                 </a>
               );
             })}
