@@ -79,9 +79,8 @@ export default function Navbar() {
           </svg>
         </button>
         </div>
-
         <div className={`lg:hidden w-full absolute z-30  right-0 -top-4 
-          ${isMenuOpen ? 'opacity-100 animate-swipe-left no-doc-scroll' : 'animate-swipe-left-out opacity-0'} 
+          ${isMenuOpen ? 'opacity-100 animate-swipe-left no-doc-scroll' : 'animate-swipe-left-out opacity-0 left-[100%]'} 
           text-2xl bg-black bg-opacity-65 overflow-x-hidden`}
           >
 
