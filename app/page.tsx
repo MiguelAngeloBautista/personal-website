@@ -3,7 +3,6 @@ import HeroSection from "../components/blog/HeroSection";
 import { Skills } from "../components/blog/Skills";
 import Projects from "../components/blog/Projects";
 import Articles from "@/components/blog/Articles";
-import Title from "@/components/blog/Title";
 
 export default function Home() {
 

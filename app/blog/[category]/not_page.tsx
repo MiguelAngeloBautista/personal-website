@@ -1,6 +1,7 @@
 import PageHeader from '@/app/blog/components/PageHeader';
 import { fetchAPI } from '@/app/blog/utils/fetch-api';
 import PostList from '@/app/blog/components/PostList';
+import Navbar from '@/components/blog/Navbar';
 
 async function fetchPostsByCategory(filter: string) {
     try {
@@ -39,6 +40,8 @@ export default async function CategoryRoute({ params }: { params: { category: st
 
     return (
         <div>
+            <Navbar />
+
             <PageHeader heading={name} text={description} />
             <PostList data={data} />
         </div>
