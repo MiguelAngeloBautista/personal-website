@@ -76,6 +76,9 @@ export async function generateMetadata(): Promise<Metadata> {
 		metadataBase: new URL("https://www.bautistahome.com"),
 		title: metadata.metaTitle,
 		description: metadata.metaDescription,
+		verification: {
+			google: "rilua_WRIkTHb1M3piXYOUKSUWDrMxkc7oabf-oARUQ"
+		},
 		// icons: {
 		//   icon: [new URL(url, getStrapiURL())],
 		// },
