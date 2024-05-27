@@ -1,0 +1,16 @@
+name: Trigger Docker Build Automation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger webhook
+        run: |
+          curl -X POST ${{ secrets.WEBHOOK_URL}} \
+          -H "Content-Type: application/json" \
+          -d '{"event_type": "push", "repository": "${{ github.repository }}", "ref": "${{ github.ref }}"}'
