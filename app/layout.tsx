@@ -13,8 +13,7 @@ const FALLBACK_SEO = {
 		template: "%s | Miguel's Portfolio",
 		default: "Miguel's Portfolio",
 	},
-	// title: "Miguel's Portfolio",
-	description: "Miguel's Portfolio - showcasing my projects and skills",
+	description: "Miguel's Portfolio - showcasing my projects and skills. Welcome to my portfolio website! I hope you can learn more about me and my work here. Feel free to reach out to me if you have any questions or would like to work together.",
 	keywords: [
 		"portfolio",
 		"web development",
@@ -36,7 +35,6 @@ const FALLBACK_SEO = {
 	authors: [{ name: "Miguel Bautista" }],
 	creator: "Miguel Bautista",
 	publisher: "Miguel Bautista",
-	// referrer: "origin-when-cross-origin",
 	formatDetection: {
 		telephone: false,
 		address: false,
@@ -156,10 +154,6 @@ export default async function RootLayout({
 					{children}
 
 					<Footer
-						// logoUrl={footerLogoUrl}
-						// logoText={footer.footerLogo.logoText}
-						// menuLinks={footer.menuLinks}
-						// categoryLinks={footer.categories.data}
 						legalLinks={footer.legalLinks}
 						socialLinks={footer.socialLinks}
 					/>
