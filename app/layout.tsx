@@ -19,7 +19,7 @@ const FALLBACK_SEO: Metadata = {
 	icons: {
 		icon: "/favicon.ico"
 	},
-	description: "Miguel's Portfolio - showcasing my projects and skills. Welcome to my portfolio website! I hope you can learn more about me and my work here. Feel free to reach out to me if you have any questions or would like to work together.",
+	description: "Miguel's Portfolio - showcasing my projects, interests and skills. Welcome to my portfolio website! I hope you can learn more about me and my work here. Feel free to reach out to me if you have any questions or would like to work together.",
 	keywords: [
 		"portfolio",
 		"web development",
@@ -53,14 +53,14 @@ const FALLBACK_SEO: Metadata = {
 		type: "website",
 		locale: "en_US",
 		title: "Miguel's Portfolio",
-		description: "Miguel's Portfolio - showcasing my projects and skills",
+		description: "Miguel's Portfolio - showcasing my projects, interests and skills",
 		url: "/",
 		siteName: "Miguel's Portfolio",
 		images: [
 			{
-				url: "/og.png",
-				width: 288,
-				height: 288,
+				url: "/og-optimal.png",
+				width: 1200,
+        height: 630,
 				alt: "Miguel's Portfolio",
 			},
 		],
@@ -96,15 +96,14 @@ export async function generateMetadata(): Promise<Metadata> {
 			type: "website",
 			locale: "en_US",
 			title: "Miguel's Portfolio",
-			description:
-				"Miguel's Portfolio - showcasing my projects and skills",
+			description: "Miguel's Portfolio - showcasing my projects, interests and skills",
 			url: "/",
 			siteName: "Miguel's Portfolio",
 			images: [
 				{
-					url: "/og.png",
-					width: 288,
-					height: 288,
+					url: "/og-optimal.png",
+				width: 1200,
+        height: 630,
 					alt: "Miguel's Portfolio",
 				},
 			],
