@@ -7,11 +7,17 @@ import { fetchAPI } from "./blog/utils/fetch-api";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const FALLBACK_SEO = {
+const FALLBACK_SEO: Metadata = {
 	metadataBase: new URL("https://www.bautistahome.com"),
 	title: {
 		template: "%s | Miguel's Portfolio",
 		default: "Miguel's Portfolio",
+	},
+	verification: {
+		google: "rilua_WRIkTHb1M3piXYOUKSUWDrMxkc7oabf-oARUQ"
+	},
+	icons: {
+		icon: "/favicon.ico"
 	},
 	description: "Miguel's Portfolio - showcasing my projects and skills. Welcome to my portfolio website! I hope you can learn more about me and my work here. Feel free to reach out to me if you have any questions or would like to work together.",
 	keywords: [
@@ -75,6 +81,9 @@ export async function generateMetadata(): Promise<Metadata> {
 		description: metadata.metaDescription,
 		verification: {
 			google: "rilua_WRIkTHb1M3piXYOUKSUWDrMxkc7oabf-oARUQ"
+		},
+		icons: {
+			icon: "/favicon.ico"
 		},
 		// icons: {
 		//   icon: [new URL(url, getStrapiURL())],
