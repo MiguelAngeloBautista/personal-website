@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         // throw new Error('Metadata not found');
         return {
             title: "Miguel's Portfolio",
-            description: "Miguel's Portfolio - showcasing my projects and skills",
+            description: "Miguel's Portfolio - showcasing my projects and skills. Welcome to my portfolio website! I hope you can learn more about me and my work here. Feel free to reach out to me if you have any questions or would like to work together. ",
         };
     }
 
