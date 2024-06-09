@@ -28,9 +28,6 @@ export default function Articles(
 	const [meta, setMeta] = useState<Meta | undefined>();
 	const [data, setData] = useState<any>([]);
 	const [isLoading, setLoading] = useState(true);
-	// const [isLoadMore, setIsLoadMore] = useState(loadmore);
-
-	// setIsLoadMore(loadmore);
 
 	const fetchData = useCallback(async (start: number, limit: number) => {
 		setLoading(true);
@@ -94,7 +91,7 @@ export default function Articles(
 				<CardSkeleton />
 			</div>
 		);
-	
+
 	// ========================= Main Content =========================
 	if (loadMore) {
 		return (
