@@ -2,8 +2,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { fetchAPI } from "@/app/blog/utils/fetch-api";
 import PostList from "@/app/blog/components/PostList";
-import Loader from "@/app/blog/components/Loader";
 import Title from "./Title";
+import CardSkeleton from "./CardSkeleton";
 
 interface Meta {
 	pagination: {
@@ -28,9 +28,6 @@ export default function Articles(
 	const [meta, setMeta] = useState<Meta | undefined>();
 	const [data, setData] = useState<any>([]);
 	const [isLoading, setLoading] = useState(true);
-	// const [isLoadMore, setIsLoadMore] = useState(loadmore);
-
-	// setIsLoadMore(loadmore);
 
 	const fetchData = useCallback(async (start: number, limit: number) => {
 		setLoading(true);
@@ -79,8 +76,23 @@ export default function Articles(
 		fetchData(0, limit);
 	}, [fetchData, limit]);
 
-	if (isLoading) return <Loader />;
+	// ========================= Loading =========================
+	if (isLoading && loadMore)
+		return (
+			<div className="text-center mx-auto text-2xl lg:text-3xl py-20 xl:w-[1400px]">
+				<CardSkeleton />
+			</div>
+		);
+	if (isLoading)
+		return (
+			<div className="text-2xl lg:text-3xl py-20 mx-auto  2xl:w-[1400px]">
+				<Title text="Blog" className="pb-10" />
+				{/* <Loader /> */}
+				<CardSkeleton />
+			</div>
+		);
 
+	// ========================= Main Content =========================
 	if (loadMore) {
 		return (
 			// max-w-sm lg:max-w-[60vw]

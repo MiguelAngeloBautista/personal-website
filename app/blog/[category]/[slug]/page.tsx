@@ -21,7 +21,10 @@ async function getMetaData(slug: string) {
     const path = `/articles`;
     const urlParamsObject = {
         filters: { slug },
-        populate: { seo: { populate: '*' } },
+        populate: { 
+            seo: { populate: '*' },
+            category: { fields: ['name'] },
+        },
     };
     const response = await fetchAPI(path, urlParamsObject);
     return response.data;
@@ -34,13 +37,29 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         // throw new Error('Metadata not found');
         return {
             title: "Miguel's Portfolio",
-            description: "Miguel's Portfolio - showcasing my projects and skills",
+            description: "Miguel's Portfolio - showcasing my projects, interests and skills. Welcome to my portfolio website! I hope you can learn more about me and my work here. Feel free to reach out to me if you have any questions or would like to work together. ",
         };
     }
 
     return {
         title: metadata.metaTitle,
         description: metadata.metaDescription,
+        openGraph: {
+            // type: "website",
+            locale: "en_US",
+            title: `Miguel's Portfolio | ${metadata.metaTitle}`,
+            description: meta[0].attributes.description,
+            url: `/blog/${meta[0].attributes.category.data.attributes.name}/${meta[0].attributes.slug}`,
+            siteName: "Miguel's Portfolio",
+            images: [
+                {
+                    url: "/og-optimal.png",
+                    width: 1200,
+                    height: 630,
+                    alt: "Miguel's Portfolio",
+                },
+            ],
+        },
     };
 }
 
