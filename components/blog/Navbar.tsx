@@ -93,7 +93,7 @@ export default function Navbar() {
 
 					{/* ========================== Hamburger Menu Button ==========================*/}
 					<button
-						className={`lg:hidden z-[31] ${isMenuOpen ? " absolute right-[3.45rem]" : " "}`}
+						className="lg:hidden z-[31]"
 						onClick={toggleMenu}
 						aria-label="Toggle Navbar Menu"
 					>
