@@ -56,7 +56,6 @@ export default function Navbar() {
 					{/* Hamburger Menu */}
 					<div className="hidden w-full items-center gap-5 lg:flex lg:w-max p-1">
 						<ul className="items-stretch space-x-3 lg:flex ">
-							{/*hidden lg:flex*/}
 							{pages.map((page, index) => {
 								return (
 									<NavLink
@@ -94,12 +93,12 @@ export default function Navbar() {
 
 					{/* ========================== Hamburger Menu Button ==========================*/}
 					<button
-						className="lg:hidden z-[31]"
+						className={`lg:hidden z-[31] ${isMenuOpen ? " absolute right-[3.45rem]" : " "}`}
 						onClick={toggleMenu}
 						aria-label="Toggle Navbar Menu"
 					>
 						<svg
-							className="w-5 h-5"
+							className="size-5"
 							aria-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -125,7 +124,7 @@ export default function Navbar() {
 					? "opacity-100 w-full min-h-screen" 
 					: "opacity-0 w-0 "
 					}`}
-					onClick={() => setIsMenuOpen(false)}
+					onClick={toggleMenu}
 				></div>
 
 				<div
