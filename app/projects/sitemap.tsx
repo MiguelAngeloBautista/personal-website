@@ -28,6 +28,8 @@ export default async function sitemap({
   return responseData.data.map((posts: Article) => ({
     url: `https://www.bautistahome.com/blog/projects/${posts.attributes.slug}`, //${posts.category.data.attributes.slug}
     lastModified: new Date(posts.attributes.updatedAt),
+    changeFrequency: 'weekly',
+    priority: 0.8,
   }))
 }
 
