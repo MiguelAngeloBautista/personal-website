@@ -6,8 +6,10 @@ name: Test, Build, and Deploy
 run-name: ${{ gitea.actor }} is running CI/CD Pipeline
 on: 
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
+    tags:
+      - v*
 
 
 jobs:
@@ -30,6 +32,24 @@ jobs:
           file_name: .env
           fail_on_empty: true
       
+      - name: Get Docker Metadata
+        id: dmeta
+        uses: docker/metadata-action@v5
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            gitea.bautistahome.com/miguelangelobautista/personal-website 
+            images.bautistahome.com/itsageba/personal-website            
+          # generate Docker tags based on the following events/attributes
+          tags: |
+            type=schedule
+            type=ref,event=tag
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -51,7 +71,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Get Meta
-        id: Meta
+        id: meta
         run: |
           echo REPO_NAME=$(echo ${GITHUB_REPOSITORY} | awk -F"/" '{print $2}')
           echo REPO_VERSION=$(git describe --tags --always | sed 's/^v//')
@@ -66,6 +86,7 @@ jobs:
           platforms: |
             linux/amd64                     
           push: true
+          labels: ${{ steps.dmeta.outputs.labels }}
           tags: |
             gitea.bautistahome.com/${{ env.DOCKER_ORG }}/${{ steps.meta.outputs.REPO_NAME }}:${{ steps.meta.outputs.REPO_VERSION }}
             gitea.bautistahome.com/${{ env.DOCKER_ORG }}/${{ steps.meta.outputs.REPO_NAME }}:latest
