@@ -1,0 +1,73 @@
+#
+# .gitea/gitea-build-image.yaml
+#
+
+name: Test, Build, and Deploy
+run-name: ${{ gitea.actor }} is running CI/CD Pipeline
+on: 
+  push:
+    branches:
+      - main
+
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    #if: gitea.ref == 'refs/heads/main'
+    env:
+      DOCKER_ORG: geba
+      DOCKER_ORG2: itsageba
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_NEXT_PUBLIC_STRAPI_API_TOKEN: ${{ secrets.STRAPI_TOKEN }}
+          envkey_NEXT_PUBLIC_PAGE_LIMIT: ${{ secrets.STRAPI_PAGE_LIMIT }}
+          envkey_NEXT_PUBLIC_STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
+          file_name: .env
+          fail_on_empty: true
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-flags: --debug
+          config-inline: |
+            [registry."gitea.bautistahome.com"]
+            [registry."images.bautistahome.com"]
+          # http = false
+          # insecure = false            
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          registry: gitea.bautistahome.com
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Get Meta
+        id: Meta
+        run: |
+          echo REPO_NAME=$(echo ${GITHUB_REPOSITORY} | awk -F"/" '{print $2}')
+          echo REPO_VERSION=$(git describe --tags --always | sed 's/^v//')
+          echo REPO_NAME=$(echo ${GITHUB_REPOSITORY} | awk -F"/" '{print $2}') >> $GITHUB_OUTPUT
+          echo REPO_VERSION=$(git describe --tags --always | sed 's/^v//') >> $GITHUB_OUTPUT
+      
+      - name: Build and push to gitea
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: |
+            linux/amd64                     
+          push: true
+          tags: |
+            gitea.bautistahome.com/${{ env.DOCKER_ORG }}/${{ steps.meta.outputs.REPO_NAME }}:${{ steps.meta.outputs.REPO_VERSION }}
+            gitea.bautistahome.com/${{ env.DOCKER_ORG }}/${{ steps.meta.outputs.REPO_NAME }}:latest
+            images.bautistahome.com/${{ env.DOCKER_ORG2 }}/${{ steps.meta.outputs.REPO_NAME }}:${{ steps.meta.outputs.REPO_VERSION }}
+            images.bautistahome.com/${{ env.DOCKER_ORG2 }}/${{ steps.meta.outputs.REPO_NAME }}:latest
