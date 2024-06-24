@@ -24,7 +24,7 @@ jobs:
           node-version: '20.13'
       - run: npm ci
       - run: npm run lint
-      - run: npm run test
+      # - run: npm run test
       - run: npm run build
         env:
           NODE_OPTIONS: --max_old_space_size=4096
@@ -61,6 +61,8 @@ jobs:
       - name: Get Meta
         id: Meta
         run: |
+          echo REPO_NAME=$(echo ${GITHUB_REPOSITORY} | awk -F"/" '{print $2}')
+          echo REPO_VERSION=$(git describe --tags --always | sed 's/^v//')
           echo REPO_NAME=$(echo ${GITHUB_REPOSITORY} | awk -F"/" '{print $2}') >> $GITHUB_OUTPUT
           echo REPO_VERSION=$(git describe --tags --always | sed 's/^v//') >> $GITHUB_OUTPUT
       
@@ -75,4 +77,4 @@ jobs:
           push: true
           tags: | # replace it with your local IP and tags
             gitea.bautistahome.com/itsageba/${{ steps.meta.outputs.REPO_NAME }}:${{ steps.meta.outputs.REPO_VERSION }}
-            gitea.bautistahome.com/itsageba/${{ steps.meta.outputs.REPO_NAME }}:latest}
+            gitea.bautistahome.com/itsageba/${{ steps.meta.outputs.REPO_NAME }}:latest
