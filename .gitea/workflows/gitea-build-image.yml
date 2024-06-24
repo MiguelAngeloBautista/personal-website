@@ -6,8 +6,6 @@ name: Test, Build, and Deploy
 run-name: ${{ gitea.actor }} is running CI/CD Pipeline
 on: 
   push:
-    branches:
-      - main
     tags:
       - v*
 
