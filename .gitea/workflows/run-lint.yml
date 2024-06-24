@@ -1,0 +1,19 @@
+#
+# .gitea/run-lint.yaml
+#
+name: Lint
+run-name: ${{ gitea.actor }} is Linting
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-node@4
+      with:
+        node-version: 20.13.0
+    - run: npm CI
+    - run: npm run lint
