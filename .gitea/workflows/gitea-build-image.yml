@@ -82,7 +82,7 @@ jobs:
             linux/amd64                     
           push: true
           labels: ${{ steps.dmeta.outputs.labels }}
-          tags: $${{ steps.dmeta.outputs.tags}}
+          tags: ${{ steps.dmeta.outputs.tags}}
           # tags: |
           #   gitea.bautistahome.com/${{ env.DOCKER_ORG }}/${{ steps.meta.outputs.REPO_NAME }}:${{ steps.meta.outputs.REPO_VERSION }}
           #   gitea.bautistahome.com/${{ env.DOCKER_ORG }}/${{ steps.meta.outputs.REPO_NAME }}:latest
