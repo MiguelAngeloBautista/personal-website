@@ -66,6 +66,8 @@ jobs:
           file: ./Dockerfile
           platforms: |
             linux/amd64                     
+          provenance: mode=max
+          sbom: true
           push: true
           labels: ${{ steps.dmeta.outputs.labels }}
           tags: ${{ steps.dmeta.outputs.tags}}
