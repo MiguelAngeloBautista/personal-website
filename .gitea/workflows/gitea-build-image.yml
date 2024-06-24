@@ -42,8 +42,6 @@ jobs:
             images.bautistahome.com/itsageba/personal-website            
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=schedule
-            type=ref,event=tag
             type=ref,event=pr
             type=semver,pattern={{version}}
 
