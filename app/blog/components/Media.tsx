@@ -22,8 +22,8 @@ export default function Media({ data }: { data: MediaProps }) {
         src={imgUrl || ""}
         alt={data.file.data.attributes.alternativeText || "none provided"}
         className="object-cover w-full h-full rounded-lg overflow-hidden"
-        width={400}
-        height={400}
+        width={2000}
+        height={2000}
       />
     </div>
   );
