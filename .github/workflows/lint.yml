@@ -19,7 +19,11 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v3
 
-      - name: Run ESLint
-        uses: wearerequired/lint-action@v2
+      - name: Setup Node.js 20.13.0
+        uses: actions/setup-node@v4
         with:
-          eslint: true
+          node-version: 20.13.0
+
+      - run: npm ci
+      - name: Run Lint
+        run: npm run lint
