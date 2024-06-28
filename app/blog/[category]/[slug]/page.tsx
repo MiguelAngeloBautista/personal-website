@@ -15,7 +15,7 @@ async function getPostBySlug(slug: string) {
     };
     const response = await fetchAPI(path, urlParamsObject);
     return response;
-}
+} // Testing
 
 async function getMetaData(slug: string) {
     const path = `/articles`;
